@@ -1,4 +1,4 @@
-import { SignatureData } from "../types";
+﻿import { SignatureData } from "../types";
 import { renderModern } from "./modern";
 import { renderBold } from "./bold";
 import { renderCompact } from "./compact";
