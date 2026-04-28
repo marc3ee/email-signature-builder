@@ -50,7 +50,7 @@ export default function PreviewPane() {
             }`}
           >
             <Code size={13} />
-            HTML
+            Source code
           </button>
         </div>
         <button
@@ -110,6 +110,7 @@ export default function PreviewPane() {
         ) : (
           /* HTML source view */
           <div className="max-w-2xl mx-auto">
+             <p className="text-xs text-surface-400 mb-3 text-center">For developer use only. To add your signature to Gmail, use the <strong>Copy Signature</strong> button on the Preview tab.</p>
             <pre className="bg-surface-900 text-surface-100 rounded-xl p-5 text-xs leading-relaxed overflow-x-auto whitespace-pre-wrap break-all font-mono">
               {html}
             </pre>
