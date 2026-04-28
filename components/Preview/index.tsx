@@ -15,7 +15,7 @@ export default function PreviewPane() {
     try {
       // Copy as rich HTML so it pastes into Gmail correctly
       const blob = new Blob([html], { type: "text/html" });
-      const item = new ClipboardItem({ "text/html": blob, "text/plain": new Blob([html], { type: "text/plain" }) });
+      const item = new ClipboardItem({ "text/html": blob });
       await navigator.clipboard.write([item]);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
