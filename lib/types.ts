@@ -1,4 +1,4 @@
-// ─── Signature Data Model ───────────────────────────────────────────────────
+﻿// â”€â”€â”€ Signature Data Model â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Single source of truth for every customizable field in the signature.
 
 export interface SignatureData {
@@ -67,13 +67,13 @@ export const DEFAULT_SIGNATURE: SignatureData = {
   fullName: "Jane Doe",
   jobTitle: "Product Designer",
   department: "",
-  company: "Acme Inc.",
+  company: "A3 Brands",
   pronouns: "she/her",
 
-  email: "jane@acme.com",
+  email: "jane@a3brands.com",
   phone: "+1 (555) 123-4567",
   mobile: "",
-  website: "https://acme.com",
+  website: "https://a3brands.com",
   address: "123 Main St, San Francisco, CA",
 
   linkedin: "https://linkedin.com/in/janedoe",
@@ -140,3 +140,4 @@ export const COLOR_THEMES = {
   charcoal: { label: "Charcoal", primaryColor: "#171717", secondaryColor: "#737373", linkColor: "#171717", dividerColor: "#D4D4D4" },
   rose: { label: "Rose", primaryColor: "#BE123C", secondaryColor: "#F43F5E", linkColor: "#BE123C", dividerColor: "#FECDD3" },
 };
+
