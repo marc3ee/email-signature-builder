@@ -107,10 +107,10 @@ export default function EditorSidebar() {
         </>)}
       </Section>
 
-      <Section title="Icon Styling">
+      {/* <Section title="Icon Styling">
         <SliderField label="Icon size" value={data.iconSize} onChange={(v) => setField("iconSize", v)} min={14} max={28} />
         <ColorField label="Icon color" value={data.iconColor} onChange={(v) => setField("iconColor", v)} />
-      </Section>
+      </Section> */}
 
       <Section title="Call to Action">
         <Field label="Button text" value={data.ctaText} onChange={(v) => setField("ctaText", v)} placeholder="e.g. Book a meeting" />
