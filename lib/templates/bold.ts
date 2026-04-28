@@ -1,4 +1,5 @@
-import { SignatureData } from "../types";
+﻿import { SignatureData } from "../types";
+import { ensureProtocol } from "../url";
 import { renderSocialIconsHtml } from "./social-icons";
 
 export function renderBold(data: SignatureData): string {
@@ -19,7 +20,7 @@ export function renderBold(data: SignatureData): string {
   if (data.email) contactParts.push(`<a href="mailto:${data.email}" style="${s.link}">${data.email}</a>`);
   if (data.website) {
     const label = data.website.replace(/^https?:\/\//, "");
-    contactParts.push(`<a href="${data.website}" style="${s.link}">${label}</a>`);
+    contactParts.push(`<a href="${ensureProtocol(data.website)}" style="${s.link}">${label}</a>`);
   }
 
   const pronounsHtml = data.showPronouns && data.pronouns
@@ -32,7 +33,7 @@ export function renderBold(data: SignatureData): string {
   if (data.company) titleParts.push(data.company);
 
   const contactHtml = contactParts.length > 0
-    ? `<tr><td style="padding-top: 4px; ${s.muted}">${contactParts.join(" &nbsp;· &nbsp;")}</td></tr>`
+    ? `<tr><td style="padding-top: 4px; ${s.muted}">${contactParts.join(" &nbsp;Â· &nbsp;")}</td></tr>`
     : "";
 
   const addressHtml = data.showAddress && data.address
@@ -44,7 +45,7 @@ export function renderBold(data: SignatureData): string {
     : "";
 
   const ctaHtml = data.ctaText && data.ctaUrl
-    ? `<tr><td style="padding-top: 10px;"><a href="${data.ctaUrl}" target="_blank" style="display: inline-block; padding: 7px 20px; background-color: ${data.ctaBgColor}; color: ${data.ctaTextColor}; text-decoration: none; font-size: ${data.fontSize}px; font-weight: 700; font-family: ${data.fontFamily}; text-transform: uppercase; letter-spacing: 0.5px;">${data.ctaText}</a></td></tr>`
+    ? `<tr><td style="padding-top: 10px;"><a href="${ensureProtocol(data.ctaUrl)}" target="_blank" style="display: inline-block; padding: 7px 20px; background-color: ${data.ctaBgColor}; color: ${data.ctaTextColor}; text-decoration: none; font-size: ${data.fontSize}px; font-weight: 700; font-family: ${data.fontFamily}; text-transform: uppercase; letter-spacing: 0.5px;">${data.ctaText}</a></td></tr>`
     : "";
 
   const logoHtml = data.showLogo && data.logoUrl
@@ -61,3 +62,4 @@ export function renderBold(data: SignatureData): string {
       : ""
   }${contactHtml}${addressHtml}${socialHtml}${ctaHtml}${logoHtml}</table></td></tr></table>`;
 }
+

@@ -1,4 +1,5 @@
 ﻿import { SignatureData } from "../types";
+import { ensureProtocol } from "../url";
 
 // Icons8 OMG-IMG service - direct PNG URLs that work in email clients
 // Format: https://img.icons8.com/{style}/{size}/{name}
@@ -47,7 +48,7 @@ export function renderSocialIconsHtml(data: SignatureData): string {
   const icons = Object.entries(SOCIAL_ICONS)
     .filter(([, config]) => config.url(data).trim() !== "")
     .map(([, config]) => {
-      const url = config.url(data);
+      const url = ensureProtocol(config.url(data));
       const size = data.iconSize;
       const imgSize = size * 2;
       const iconUrl = `https://img.icons8.com/color/${imgSize}/${config.iconName}.png`;
@@ -57,3 +58,4 @@ export function renderSocialIconsHtml(data: SignatureData): string {
   if (icons.length === 0) return "";
   return icons.join("");
 }
+

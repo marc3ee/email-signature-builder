@@ -1,4 +1,5 @@
-import { SignatureData } from "../types";
+﻿import { SignatureData } from "../types";
+import { ensureProtocol } from "../url";
 import { renderSocialIconsHtml } from "./social-icons";
 
 export function renderModern(data: SignatureData): string {
@@ -23,7 +24,7 @@ export function renderModern(data: SignatureData): string {
   if (data.email) contactParts.push(`<a href="mailto:${data.email}" style="${s.link}">${data.email}</a>`);
   if (data.website) {
     const label = data.website.replace(/^https?:\/\//, "");
-    contactParts.push(`<a href="${data.website}" style="${s.link}">${label}</a>`);
+    contactParts.push(`<a href="${ensureProtocol(data.website)}" style="${s.link}">${label}</a>`);
   }
 
   const contactHtml = contactParts.length > 0
@@ -39,7 +40,7 @@ export function renderModern(data: SignatureData): string {
     : "";
 
   const ctaHtml = data.ctaText && data.ctaUrl
-    ? `<tr><td style="padding-top: 10px;"><a href="${data.ctaUrl}" target="_blank" style="display: inline-block; padding: 6px 16px; background-color: ${data.ctaBgColor}; color: ${data.ctaTextColor}; text-decoration: none; border-radius: 4px; font-size: ${data.fontSize}px; font-family: ${data.fontFamily};">${data.ctaText}</a></td></tr>`
+    ? `<tr><td style="padding-top: 10px;"><a href="${ensureProtocol(data.ctaUrl)}" target="_blank" style="display: inline-block; padding: 6px 16px; background-color: ${data.ctaBgColor}; color: ${data.ctaTextColor}; text-decoration: none; border-radius: 4px; font-size: ${data.fontSize}px; font-family: ${data.fontFamily};">${data.ctaText}</a></td></tr>`
     : "";
 
   const logoHtml = data.showLogo && data.logoUrl
@@ -61,7 +62,8 @@ export function renderModern(data: SignatureData): string {
       : ""
   }<td style="vertical-align: top;"><table cellpadding="0" cellspacing="0" border="0"><tr><td style="${s.name}">${data.fullName}${pronounsHtml}</td></tr>${
     titleParts.length > 0
-      ? `<tr><td style="${s.title}">${titleParts.join(" · ")}</td></tr>`
+      ? `<tr><td style="${s.title}">${titleParts.join(" Â· ")}</td></tr>`
       : ""
   }${dividerHtml}${contactHtml}${addressHtml}${socialHtml}${ctaHtml}${logoHtml}</table></td></tr></table>`;
 }
+
