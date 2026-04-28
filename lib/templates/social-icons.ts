@@ -1,41 +1,42 @@
 ﻿import { SignatureData } from "../types";
 
-const CDN = "https://cdn.jsdelivr.net/gh/dmhendricks/signature-social-icons/icons/round-flat-filled/50px";
-
-const SOCIAL_ICONS: Record<string, { url: (data: SignatureData) => string; icon: string; label: string }> = {
+// Icons8 OMG-IMG service - direct PNG URLs that work in email clients
+// Format: https://img.icons8.com/{style}/{size}/{name}
+// Attribution required: https://icons8.com (add to your site footer)
+const SOCIAL_ICONS: Record<string, { url: (data: SignatureData) => string; iconName: string; label: string }> = {
   linkedin: {
     url: (d) => d.linkedin,
-    icon: `${CDN}/linkedin.png`,
+    iconName: "linkedin",
     label: "LinkedIn",
   },
   twitter: {
     url: (d) => d.twitter,
-    icon: `${CDN}/twitter.png`,
-    label: "Twitter",
+    iconName: "twitterx",
+    label: "X (Twitter)",
   },
   instagram: {
     url: (d) => d.instagram,
-    icon: `${CDN}/instagram.png`,
+    iconName: "instagram-new",
     label: "Instagram",
   },
   facebook: {
     url: (d) => d.facebook,
-    icon: `${CDN}/facebook.png`,
+    iconName: "facebook",
     label: "Facebook",
   },
   youtube: {
     url: (d) => d.youtube,
-    icon: `${CDN}/youtube.png`,
+    iconName: "youtube-play",
     label: "YouTube",
   },
   github: {
     url: (d) => d.github,
-    icon: `${CDN}/github.png`,
+    iconName: "github",
     label: "GitHub",
   },
   tiktok: {
     url: (d) => d.tiktok,
-    icon: `${CDN}/tiktok.png`,
+    iconName: "tiktok",
     label: "TikTok",
   },
 };
@@ -48,7 +49,9 @@ export function renderSocialIconsHtml(data: SignatureData): string {
     .map(([, config]) => {
       const url = config.url(data);
       const size = data.iconSize;
-      return `<a href="${url}" target="_blank" style="border-width: 0px; border: 0px; text-decoration: none; display: inline-block; margin-right: 4px;"><img src="${config.icon}" alt="${config.label}" title="${config.label}" width="${size}" height="${size}" style="border: none; width: ${size}px; max-width: ${size}px !important; height: ${size}px; max-height: ${size}px !important; display: block;" /></a>`;
+      const imgSize = size * 2;
+      const iconUrl = `https://img.icons8.com/color/${imgSize}/${config.iconName}.png`;
+      return `<a href="${url}" target="_blank" style="border: 0; text-decoration: none; display: inline-block; margin-right: 4px;"><img src="${iconUrl}" alt="${config.label}" title="${config.label}" width="${size}" height="${size}" style="border: 0; width: ${size}px; height: ${size}px; display: block;" /></a>`;
     });
 
   if (icons.length === 0) return "";
