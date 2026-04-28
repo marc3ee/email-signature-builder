@@ -1,4 +1,4 @@
-﻿import { SignatureData } from "../types";
+import { SignatureData } from "../types";
 import { ensureProtocol } from "../url";
 import { renderSocialIconsHtml } from "./social-icons";
 
@@ -62,7 +62,7 @@ export function renderModern(data: SignatureData): string {
       : ""
   }<td style="vertical-align: top;"><table cellpadding="0" cellspacing="0" border="0"><tr><td style="${s.name}">${data.fullName}${pronounsHtml}</td></tr>${
     titleParts.length > 0
-      ? `<tr><td style="${s.title}">${titleParts.join(" Â· ")}</td></tr>`
+      ? `<tr><td style="${s.title}">${titleParts.join(" · ")}</td></tr>`
       : ""
   }${dividerHtml}${contactHtml}${addressHtml}${socialHtml}${ctaHtml}${logoHtml}</table></td></tr></table>`;
 }

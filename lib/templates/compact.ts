@@ -1,4 +1,4 @@
-﻿import { SignatureData } from "../types";
+import { SignatureData } from "../types";
 import { ensureProtocol } from "../url";
 import { renderSocialIconsHtml } from "./social-icons";
 
@@ -15,7 +15,7 @@ export function renderCompact(data: SignatureData): string {
     ? ` <span style="font-size: ${data.fontSize - 1}px; color: ${data.secondaryColor};">(${data.pronouns})</span>`
     : "";
 
-  // Line 1: Name Â· Title Â· Company
+  // Line 1: Name · Title · Company
   const line1Parts: string[] = [`<span style="${s.name}">${data.fullName}${pronounsHtml}</span>`];
   if (data.jobTitle) line1Parts.push(`<span style="${s.muted}">${data.jobTitle}</span>`);
   if (data.company) line1Parts.push(`<span style="${s.muted}">${data.company}</span>`);

@@ -1,4 +1,4 @@
-﻿import { SignatureData } from "../types";
+import { SignatureData } from "../types";
 import { ensureProtocol } from "../url";
 import { renderSocialIconsHtml } from "./social-icons";
 
@@ -33,7 +33,7 @@ export function renderBold(data: SignatureData): string {
   if (data.company) titleParts.push(data.company);
 
   const contactHtml = contactParts.length > 0
-    ? `<tr><td style="padding-top: 4px; ${s.muted}">${contactParts.join(" &nbsp;Â· &nbsp;")}</td></tr>`
+    ? `<tr><td style="padding-top: 4px; ${s.muted}">${contactParts.join(" &nbsp;· &nbsp;")}</td></tr>`
     : "";
 
   const addressHtml = data.showAddress && data.address
