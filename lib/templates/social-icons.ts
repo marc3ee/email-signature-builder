@@ -1,41 +1,41 @@
 ﻿import { SignatureData } from "../types";
 
-// Using imgur-hosted icons or similar permanent CDN URLs
-// These are simple, clean social icons that work in all email clients
+const CDN = "https://cdn.jsdelivr.net/gh/dmhendricks/signature-social-icons/icons/round-flat-filled/50px";
+
 const SOCIAL_ICONS: Record<string, { url: (data: SignatureData) => string; icon: string; label: string }> = {
   linkedin: {
     url: (d) => d.linkedin,
-    icon: "https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/linkedin-icon-2x.png",
+    icon: `${CDN}/linkedin.png`,
     label: "LinkedIn",
   },
   twitter: {
     url: (d) => d.twitter,
-    icon: "https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/twitter-icon-2x.png",
+    icon: `${CDN}/twitter.png`,
     label: "Twitter",
   },
   instagram: {
     url: (d) => d.instagram,
-    icon: "https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/instagram-icon-2x.png",
+    icon: `${CDN}/instagram.png`,
     label: "Instagram",
   },
   facebook: {
     url: (d) => d.facebook,
-    icon: "https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/facebook-icon-2x.png",
+    icon: `${CDN}/facebook.png`,
     label: "Facebook",
   },
   youtube: {
     url: (d) => d.youtube,
-    icon: "https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/youtube-icon-2x.png",
+    icon: `${CDN}/youtube.png`,
     label: "YouTube",
   },
   github: {
     url: (d) => d.github,
-    icon: "https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/github-icon-2x.png",
+    icon: `${CDN}/github.png`,
     label: "GitHub",
   },
   tiktok: {
     url: (d) => d.tiktok,
-    icon: "https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/tiktok-icon-2x.png",
+    icon: `${CDN}/tiktok.png`,
     label: "TikTok",
   },
 };
@@ -47,7 +47,8 @@ export function renderSocialIconsHtml(data: SignatureData): string {
     .filter(([, config]) => config.url(data).trim() !== "")
     .map(([, config]) => {
       const url = config.url(data);
-      return `<a href="${url}" target="_blank" style="text-decoration: none; margin-right: 6px; display: inline-block;"><img src="${config.icon}" alt="${config.label}" width="${data.iconSize}" height="${data.iconSize}" style="display: block; border: 0;" /></a>`;
+      const size = data.iconSize;
+      return `<a href="${url}" target="_blank" style="border-width: 0px; border: 0px; text-decoration: none; display: inline-block; margin-right: 4px;"><img src="${config.icon}" alt="${config.label}" title="${config.label}" width="${size}" height="${size}" style="border: none; width: ${size}px; max-width: ${size}px !important; height: ${size}px; max-height: ${size}px !important; display: block;" /></a>`;
     });
 
   if (icons.length === 0) return "";
