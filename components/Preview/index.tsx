@@ -13,14 +13,12 @@ export default function PreviewPane() {
 
   const handleCopy = useCallback(async () => {
     try {
-      // Copy as rich HTML so it pastes into Gmail correctly
       const blob = new Blob([html], { type: "text/html" });
       const item = new ClipboardItem({ "text/html": blob });
       await navigator.clipboard.write([item]);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      // Fallback: copy as plain text
       await navigator.clipboard.writeText(html);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
