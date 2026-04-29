@@ -67,10 +67,6 @@ export default function EditorSidebar() {
           <SliderField label="Size" value={data.headshotSize} onChange={(v) => setField("headshotSize", v)} min={40} max={150} />
         </>)}
         <Toggle label="Show logo" checked={data.showLogo} onChange={(v) => setField("showLogo", v)} />
-        {data.showLogo && (<>
-          <Field label="Logo URL" value={data.logoUrl} onChange={(v) => setField("logoUrl", v)} placeholder="https://..." />
-          <SliderField label="Logo width" value={data.logoWidth} onChange={(v) => setField("logoWidth", v)} min={40} max={300} />
-        </>)}
       </Section>
 
       <Section title="Colors">

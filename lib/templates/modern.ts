@@ -43,8 +43,8 @@ export function renderModern(data: SignatureData): string {
     ? `<tr><td style="padding-top: 10px;"><a href="${ensureProtocol(data.ctaUrl)}" target="_blank" style="display: inline-block; padding: 6px 16px; background-color: ${data.ctaBgColor}; color: ${data.ctaTextColor}; text-decoration: none; border-radius: 4px; font-size: ${data.fontSize}px; font-family: ${data.fontFamily};">${data.ctaText}</a></td></tr>`
     : "";
 
-  const logoHtml = data.showLogo && data.logoUrl
-    ? `<tr><td style="padding-top: 10px;"><img src="${data.logoUrl}" width="${data.logoWidth}" style="display: block;" /></td></tr>`
+  const logoHtml = data.showLogo
+    ? `<tr><td style="padding-top: 10px;"><img src="https://a3brands.com/images/logo/a3brands-logo.png" width="120" style="display: block;" /></td></tr>`
     : "";
 
   const pronounsHtml = data.showPronouns && data.pronouns

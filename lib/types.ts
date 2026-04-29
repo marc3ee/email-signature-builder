@@ -28,8 +28,6 @@ export interface SignatureData {
   headshotUrl: string;
   headshotShape: "square" | "circle" | "rounded";
   headshotSize: number;
-  logoUrl: string;
-  logoWidth: number;
 
   // Design
   templateId: string;
@@ -85,8 +83,6 @@ export const DEFAULT_SIGNATURE: SignatureData = {
   headshotUrl: "",
   headshotShape: "circle",
   headshotSize: 90,
-  logoUrl: "",
-  logoWidth: 120,
 
   templateId: "modern",
   primaryColor: "#1A1A1A",
@@ -104,7 +100,7 @@ export const DEFAULT_SIGNATURE: SignatureData = {
   iconColor: "#6B7280",
 
   showHeadshot: false,
-  showLogo: false,
+  showLogo: true,
   showSocialIcons: true,
   showDivider: true,
   showAddress: false,
