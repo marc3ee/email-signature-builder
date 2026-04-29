@@ -103,7 +103,7 @@ export default function PreviewPane() {
             {/* Paste instructions */}
             <div className="mt-4 text-center">
               <p className="text-xs text-surface-400">
-                Click <strong>Copy Signature</strong> → Gmail Settings → Signature → Paste
+                Click <strong>Copy Signature</strong> → Gmail Settings → Signature → Paste → Save Changes.
               </p>
             </div>
           </div>
