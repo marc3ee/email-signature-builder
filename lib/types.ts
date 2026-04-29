@@ -12,7 +12,6 @@ export interface SignatureData {
   // Contact
   email: string;
   phone: string;
-  mobile: string;
   website: string;
   address: string;
 
@@ -72,7 +71,6 @@ export const DEFAULT_SIGNATURE: SignatureData = {
 
   email: "jane@a3brands.com",
   phone: "+1 (555) 123-4567",
-  mobile: "",
   website: "https://a3brands.com",
   address: "123 Main St, San Francisco, CA",
 

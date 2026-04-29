@@ -38,8 +38,7 @@ export default function EditorSidebar() {
 
       <Section title="Contact Details">
         <Field label="Email" value={data.email} onChange={(v) => setField("email", v)} type="email" />
-        <Field label="Phone" value={data.phone} onChange={(v) => setField("phone", v)} type="tel" />
-        <Field label="Mobile" value={data.mobile} onChange={(v) => setField("mobile", v)} type="tel" placeholder="Optional" />
+        <Field label="Contact Number" value={data.phone} onChange={(v) => setField("phone", v)} type="tel" />
         <Field label="Website" value={data.website} onChange={(v) => setField("website", v)} placeholder="https://..." />
         <div className="flex items-end gap-2">
           <div className="flex-1"><Field label="Address" value={data.address} onChange={(v) => setField("address", v)} placeholder="Optional" /></div>
