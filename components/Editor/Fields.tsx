@@ -3,6 +3,8 @@
 import { HexColorPicker } from "react-colorful";
 import { useState, useRef, useEffect } from "react";
 
+// ─── Text Input ──────────────────────────────────────────────────────────────
+
 export function Field({
   label,
   value,
@@ -31,6 +33,8 @@ export function Field({
     </label>
   );
 }
+
+// ─── Toggle Switch ───────────────────────────────────────────────────────────
 
 export function Toggle({
   label,
@@ -62,6 +66,8 @@ export function Toggle({
     </label>
   );
 }
+
+// ─── Color Picker ────────────────────────────────────────────────────────────
 
 export function ColorField({
   label,
@@ -113,6 +119,8 @@ export function ColorField({
   );
 }
 
+// ─── Select Dropdown ─────────────────────────────────────────────────────────
+
 export function SelectField({
   label,
   value,
@@ -143,6 +151,8 @@ export function SelectField({
     </label>
   );
 }
+
+// ─── Range Slider ────────────────────────────────────────────────────────────
 
 export function SliderField({
   label,
