@@ -24,11 +24,6 @@ export interface SignatureData {
   github: string;
   tiktok: string;
 
-  // Images
-  headshotUrl: string;
-  headshotShape: "square" | "circle" | "rounded";
-  headshotSize: number;
-
   // Design
   templateId: string;
   primaryColor: string;
@@ -46,7 +41,6 @@ export interface SignatureData {
   iconColor: string;
 
   // Toggles
-  showHeadshot: boolean;
   showLogo: boolean;
   showSocialIcons: boolean;
   showDivider: boolean;
@@ -80,10 +74,6 @@ export const DEFAULT_SIGNATURE: SignatureData = {
   github: "",
   tiktok: "",
 
-  headshotUrl: "",
-  headshotShape: "circle",
-  headshotSize: 90,
-
   templateId: "modern",
   primaryColor: "#1A1A1A",
   secondaryColor: "#6B7280",
@@ -99,7 +89,6 @@ export const DEFAULT_SIGNATURE: SignatureData = {
   iconSize: 18,
   iconColor: "#6B7280",
 
-  showHeadshot: false,
   showLogo: true,
   showSocialIcons: true,
   showDivider: true,

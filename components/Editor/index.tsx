@@ -60,12 +60,6 @@ export default function EditorSidebar() {
       </Section>
 
       <Section title="Images">
-        <Toggle label="Show headshot" checked={data.showHeadshot} onChange={(v) => setField("showHeadshot", v)} />
-        {data.showHeadshot && (<>
-          <Field label="Headshot URL" value={data.headshotUrl} onChange={(v) => setField("headshotUrl", v)} placeholder="https://..." />
-          <SelectField label="Shape" value={data.headshotShape} onChange={(v) => setField("headshotShape", v as "circle" | "square" | "rounded")} options={[{ label: "Circle", value: "circle" }, { label: "Rounded", value: "rounded" }, { label: "Square", value: "square" }]} />
-          <SliderField label="Size" value={data.headshotSize} onChange={(v) => setField("headshotSize", v)} min={40} max={150} />
-        </>)}
         <Toggle label="Show logo" checked={data.showLogo} onChange={(v) => setField("showLogo", v)} />
       </Section>
 

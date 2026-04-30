@@ -11,10 +11,6 @@ export function renderModern(data: SignatureData): string {
     muted: `font-size: ${data.fontSize - 1}px; color: ${data.secondaryColor};`,
   };
 
-  const headshotRadius =
-    data.headshotShape === "circle" ? "50%" :
-    data.headshotShape === "rounded" ? "8px" : "0";
-
   const dividerHtml = data.showDivider && data.dividerStyle !== "none"
     ? `<tr><td style="padding: 8px 0;"><table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td style="border-top: ${data.dividerWidth}px ${data.dividerStyle} ${data.dividerColor}; font-size: 1px; line-height: 1px;">&nbsp;</td></tr></table></td></tr>`
     : "";
@@ -43,10 +39,6 @@ export function renderModern(data: SignatureData): string {
     ? `<tr><td style="padding-top: 10px;"><a href="${ensureProtocol(data.ctaUrl)}" target="_blank" style="display: inline-block; padding: 6px 16px; background-color: ${data.ctaBgColor}; color: ${data.ctaTextColor}; text-decoration: none; border-radius: 4px; font-size: ${data.fontSize}px; font-family: ${data.fontFamily};">${data.ctaText}</a></td></tr>`
     : "";
 
-  const logoHtml = data.showLogo
-    ? `<tr><td style="padding-top: 10px;"><img src="https://a3brands.com/images/logo/a3brands-logo.png" width="120" style="display: block;" /></td></tr>`
-    : "";
-
   const pronounsHtml = data.showPronouns && data.pronouns
     ? ` <span style="font-size: ${data.fontSize - 1}px; color: ${data.secondaryColor};">(${data.pronouns})</span>`
     : "";
@@ -57,13 +49,13 @@ export function renderModern(data: SignatureData): string {
   if (data.company) titleParts.push(data.company);
 
   return `<table cellpadding="0" cellspacing="0" border="0" style="${s.font}"><tr>${
-    data.showHeadshot && data.headshotUrl
-      ? `<td style="vertical-align: top; padding-right: 14px;"><img src="${data.headshotUrl}" width="${data.headshotSize}" height="${data.headshotSize}" style="border-radius: ${headshotRadius}; display: block; object-fit: cover;" /></td>`
+    data.showLogo
+      ? `<td style="vertical-align: top; padding-right: 14px;"><img src="https://a3brands-logo.vercel.app/a3brands_logo.jpg" width="120" style="display: block;" /></td>`
       : ""
   }<td style="vertical-align: top;"><table cellpadding="0" cellspacing="0" border="0"><tr><td style="${s.name}">${data.fullName}${pronounsHtml}</td></tr>${
     titleParts.length > 0
       ? `<tr><td style="${s.title}">${titleParts.join(" · ")}</td></tr>`
       : ""
-  }${dividerHtml}${contactHtml}${addressHtml}${socialHtml}${ctaHtml}${logoHtml}</table></td></tr></table>`;
+  }${dividerHtml}${contactHtml}${addressHtml}${socialHtml}${ctaHtml}</table></td></tr></table>`;
 }
 

@@ -45,12 +45,12 @@ export function renderCompact(data: SignatureData): string {
     ? `<tr><td style="padding-top: 8px;"><a href="${ensureProtocol(data.ctaUrl)}" target="_blank" style="display: inline-block; padding: 5px 14px; background-color: ${data.ctaBgColor}; color: ${data.ctaTextColor}; text-decoration: none; border-radius: 3px; font-size: ${data.fontSize - 1}px; font-family: ${data.fontFamily};">${data.ctaText}</a></td></tr>`
     : "";
 
-  const logoHtml = data.showLogo
-    ? `<tr><td style="padding-top: 8px;"><img src="https://a3brands.com/images/logo/a3brands-logo.png" width="120" style="display: block;" /></td></tr>`
-    : "";
-
-  return `<table cellpadding="0" cellspacing="0" border="0" style="${s.font}"><tr><td><table cellpadding="0" cellspacing="0" border="0"><tr><td>${line1Parts.join(s.sep)}</td></tr>${dividerHtml}${
+  return `<table cellpadding="0" cellspacing="0" border="0" style="${s.font}"><tr>${
+    data.showLogo
+      ? `<td style="vertical-align: top; padding-right: 14px;"><img src="https://a3brands-logo.vercel.app/a3brands_logo.jpg" width="120" style="display: block;" /></td>`
+      : ""
+  }<td style="vertical-align: top;"><table cellpadding="0" cellspacing="0" border="0"><tr><td>${line1Parts.join(s.sep)}</td></tr>${dividerHtml}${
     line2Parts.length > 0 ? `<tr><td style="${s.muted}">${line2Parts.join(s.sep)}</td></tr>` : ""
-  }${addressHtml}${socialHtml}${ctaHtml}${logoHtml}</table></td></tr></table>`;
+  }${addressHtml}${socialHtml}${ctaHtml}</table></td></tr></table>`;
 }
 

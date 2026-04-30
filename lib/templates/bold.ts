@@ -11,10 +11,6 @@ export function renderBold(data: SignatureData): string {
     muted: `font-size: ${data.fontSize - 1}px; color: ${data.secondaryColor};`,
   };
 
-  const headshotRadius =
-    data.headshotShape === "circle" ? "50%" :
-    data.headshotShape === "rounded" ? "8px" : "0";
-
   const contactParts: string[] = [];
   if (data.phone) contactParts.push(`<a href="tel:${data.phone}" style="${s.link}">${data.phone}</a>`);
   if (data.email) contactParts.push(`<a href="mailto:${data.email}" style="${s.link}">${data.email}</a>`);
@@ -48,18 +44,14 @@ export function renderBold(data: SignatureData): string {
     ? `<tr><td style="padding-top: 10px;"><a href="${ensureProtocol(data.ctaUrl)}" target="_blank" style="display: inline-block; padding: 7px 20px; background-color: ${data.ctaBgColor}; color: ${data.ctaTextColor}; text-decoration: none; font-size: ${data.fontSize}px; font-weight: 700; font-family: ${data.fontFamily}; text-transform: uppercase; letter-spacing: 0.5px;">${data.ctaText}</a></td></tr>`
     : "";
 
-  const logoHtml = data.showLogo
-    ? `<tr><td style="padding-top: 10px;"><img src="https://a3brands.com/images/logo/a3brands-logo.png" width="120" style="display: block;" /></td></tr>`
-    : "";
-
   return `<table cellpadding="0" cellspacing="0" border="0" style="${s.font}"><tr>${
-    data.showHeadshot && data.headshotUrl
-      ? `<td style="vertical-align: top; padding-right: 14px;"><img src="${data.headshotUrl}" width="${data.headshotSize}" height="${data.headshotSize}" style="border-radius: ${headshotRadius}; display: block; object-fit: cover;" /></td>`
+    data.showLogo
+      ? `<td style="vertical-align: top; padding-right: 14px;"><img src="https://a3brands-logo.vercel.app/a3brands_logo.jpg" width="120" style="display: block;" /></td>`
       : ""
   }<td style="border-left: 3px solid ${data.primaryColor}; padding-left: 12px; vertical-align: top;"><table cellpadding="0" cellspacing="0" border="0"><tr><td style="${s.name}">${data.fullName}${pronounsHtml}</td></tr>${
     titleParts.length > 0
       ? `<tr><td style="${s.title}">${titleParts.join(" | ")}</td></tr>`
       : ""
-  }${contactHtml}${addressHtml}${socialHtml}${ctaHtml}${logoHtml}</table></td></tr></table>`;
+  }${contactHtml}${addressHtml}${socialHtml}${ctaHtml}</table></td></tr></table>`;
 }
 
